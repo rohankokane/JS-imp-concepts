@@ -1,4 +1,4 @@
-export function debouncer(fn, delay, ...defaultArgs) {
+export function debouncer(fn, delay = 0, ...defaultArgs) {
   let timer;
   return (...innerArgs) => {
     let context = this,
