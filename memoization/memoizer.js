@@ -1,4 +1,4 @@
-function memoizer(fun) {
+export function memoizer(fun) {
   let cache = {};
 
   return function (n) {

@@ -1,8 +1,8 @@
-var fibonacci = (function () {
-  var memo = {};
+let fibonacci = (function () {
+  let memo = {};
 
   function f(n) {
-    var value;
+    let value;
 
     if (n in memo) {
       value = memo[n];

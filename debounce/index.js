@@ -12,3 +12,5 @@ const debouncedGetData = debounce(getData, 500, "default args");
 inputField.addEventListener("keyup", () => {
   debouncedGetData("henloo");
 });
+
+export { debounce };

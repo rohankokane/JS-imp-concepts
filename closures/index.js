@@ -1,17 +1,19 @@
+// the hard parts of javascript - closures
+// http://csbin.io/closures solutions
+
 // CHALLENGE 1
 function createFunction() {
-	return () => console.log('hello')
+  return () => console.log("hello");
 }
 
 // /*** Uncomment these to check your work! ***/
 // const function1 = createFunction();
 // function1(); // => should console.log('hello');
 
-
 // CHALLENGE 2
-var input = 'global'
+var input = "global";
 function createFunctionPrinter(input) {
-	return () => console.log(input)
+  return () => console.log(input);
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -20,13 +22,12 @@ function createFunctionPrinter(input) {
 // const printHello = createFunctionPrinter('hello');
 // printHello(); // => should console.log('hello');
 
-
 // CHALLENGE 3
 function outer() {
   let counter = 0; // this variable is outside incrementCounter's scope
-  function incrementCounter () {
-    counter ++;
-    console.log('counter', counter);
+  function incrementCounter() {
+    counter++;
+    console.log("counter", counter);
   }
   return incrementCounter;
 }
@@ -45,9 +46,8 @@ const jasCounter = outer();
 // jasCounter();
 // willCounter();
 
-
 function addByX(x) {
-	return (y) => x+y;
+  return (y) => x + y;
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -64,16 +64,15 @@ function addByX(x) {
 // addByFour(4); // => should return 8
 // addByFour(5); // => should return 9
 
-
 // CHALLENGE 4
 function once(func) {
-  let lastResult=null;
+  let lastResult = null;
   return (...args) => {
-    if(lastResult===null) {
-      lastResult = func(...args)
+    if (lastResult === null) {
+      lastResult = func(...args);
     }
-    return lastResult
-  }
+    return lastResult;
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -82,14 +81,13 @@ function once(func) {
 // console.log(onceFunc(10));  // => should log 6
 // console.log(onceFunc(9001));  // => should log 6
 
-
 // CHALLENGE 5
 function after(count, func) {
-	let counter = 1;
+  let counter = 1;
   return () => {
-    if(counter === count) func()
-    else counter++
-  }
+    if (counter === count) func();
+    else counter++;
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -99,12 +97,11 @@ function after(count, func) {
 // afterCalled(); // => nothing is printed
 // afterCalled(); // => 'hello' is printed
 
-
 // CHALLENGE 6
 function delay(func, wait) {
-	return (...args) => {
-    setTimeout(()=> func(...args), wait)
-  }
+  return (...args) => {
+    setTimeout(() => func(...args), wait);
+  };
 }
 
 // UNCOMMENT THE CODE BELOW TO TEST DELAY
@@ -114,15 +111,13 @@ function delay(func, wait) {
 // console.log(count); 												 // should print '0'
 // setTimeout(() => console.log(count), 2000); // should print '1' after 1 second
 
-
-
 // CHALLENGE 7
 function rollCall(names) {
   let index = 0;
-	return () => {
-    if(index === names.length) console.log('Everyone accounted for')
-    else console.log(names[index++])
-  }
+  return () => {
+    if (index === names.length) console.log("Everyone accounted for");
+    else console.log(names[index++]);
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -132,16 +127,15 @@ function rollCall(names) {
 // rollCaller() // => should log 'Ruth'
 // rollCaller() // => should log 'Everyone accounted for'
 
-
 // CHALLENGE 8
 function saveOutput(func, magicWord) {
-  let cache = {}
-	return (arg) => {
-    if(arg === magicWord) return cache;
-    
+  let cache = {};
+  return (arg) => {
+    if (arg === magicWord) return cache;
+
     cache[arg] = func(arg);
     return cache[arg];
-  }
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -151,14 +145,13 @@ function saveOutput(func, magicWord) {
 // console.log(multBy2AndLog(9)); // => should log 18
 // console.log(multBy2AndLog('boo')); // => should log { 2: 4, 9: 18 }
 
-
 // CHALLENGE 9
 function cycleIterator(array) {
   let index = 0;
-	return () => {
-    if(index===array.length) index = 0;
+  return () => {
+    if (index === array.length) index = 0;
     return array[index++];
-  }
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -169,10 +162,9 @@ function cycleIterator(array) {
 // console.log(getDay()); // => should log 'Sun'
 // console.log(getDay()); // => should log 'Fri'
 
-
 // CHALLENGE 10
 function defineFirstArg(func, arg) {
-	return (...args)=>func(arg, ...args)
+  return (...args) => func(arg, ...args);
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -180,16 +172,15 @@ function defineFirstArg(func, arg) {
 // const subFrom20 = defineFirstArg(subtract, 20);
 // console.log(subFrom20(5)); // => should log 15
 
-
 // CHALLENGE 11
 function dateStamp(func) {
-	return (...args)=> {
+  return (...args) => {
     let obj = {
       date: new Date().toString(),
       output: func(...args)
-    }
+    };
     return obj;
-  }
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -197,20 +188,19 @@ function dateStamp(func) {
 // console.log(stampedMultBy2(4)); // => should log { date: (today's date), output: 8 }
 // console.log(stampedMultBy2(6)); // => should log { date: (today's date), output: 12 }
 
-
 // CHALLENGE 12
 function censor() {
-  const censorWords = {}
-	return (str1, str2) => {
-    if(str2!==undefined) {
-    	censorWords[str1] = str2
+  const censorWords = {};
+  return (str1, str2) => {
+    if (str2 !== undefined) {
+      censorWords[str1] = str2;
     } else {
-      for(const str in censorWords) {
-	      str1 = str1.replaceAll(str, censorWords[str])
+      for (const str in censorWords) {
+        str1 = str1.replaceAll(str, censorWords[str]);
       }
       return str1;
     }
-  }
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -219,18 +209,17 @@ function censor() {
 // changeScene('quick', 'slow');
 // console.log(changeScene('The quick, brown fox jumps over the lazy dogs.')); // => should log 'The slow, brown fox jumps over the lazy cats.'
 
-
 // CHALLENGE 13
 function createSecretHolder(secret) {
-	let privateSecret = secret;
+  let privateSecret = secret;
   return {
     getSecret() {
-      return privateSecret
+      return privateSecret;
     },
     setSecret(newSecret) {
-      privateSecret = newSecret
+      privateSecret = newSecret;
     }
-  }
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -239,11 +228,10 @@ function createSecretHolder(secret) {
 // obj.setSecret(2)
 // console.log(obj.getSecret()) // => returns 2
 
-
 // CHALLENGE 14
 function callTimes() {
-  let counter=0;
-	return () => counter++;
+  let counter = 0;
+  return () => counter++;
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -254,21 +242,19 @@ function callTimes() {
 // myNewFunc2(); // => 1
 // myNewFunc2(); // => 2
 
-
 // CHALLENGE 15
 function roulette(num) {
   let counter = 0;
-	return () => {
-    if(counter === num-1){
-			counter++;
-      return 'win';      
-    } 
-    else if(counter >= num) {
-      return 'pick a number to play again';
+  return () => {
+    if (counter === num - 1) {
+      counter++;
+      return "win";
+    } else if (counter >= num) {
+      return "pick a number to play again";
     }
     counter++;
-    return 'spin'
-  }
+    return "spin";
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -279,18 +265,17 @@ function roulette(num) {
 // console.log(play()); // => should log 'pick a number to play again'
 // console.log(play()); // => should log 'pick a number to play again'
 
-
 // CHALLENGE 16
 function average() {
   let count = 0;
   let avg = 0;
-	return (num) => {
-    if(num) {
+  return (num) => {
+    if (num) {
       ++count;
-      avg = ((avg*(count-1)) + num)/count;
+      avg = (avg * (count - 1) + num) / count;
     }
     return avg;
-  }
+  };
 }
 
 // /*** Uncomment these to check your work! ***/
@@ -302,21 +287,19 @@ function average() {
 // console.log(avgSoFar(12)); // => should log 8
 // console.log(avgSoFar()); // => should log 8
 
-
 // CHALLENGE 18
 function makeHistory(limit) {
-	const history = []
-  return (str) =>{
-    if(str === 'undo') {
-     	if(history.length === 0) return 'Nothing left to undo'
-      else return history.pop() + ' undone'
+  const history = [];
+  return (str) => {
+    if (str === "undo") {
+      if (history.length === 0) return "Nothing left to undo";
+      else return history.pop() + " undone";
     } else {
-      if(history.length === limit) history.shift()
-      history.push(str)
-      return str + ' done'
+      if (history.length === limit) history.shift();
+      history.push(str);
+      return str + " done";
     }
-  }
-  
+  };
 }
 
 // /*** Uncomment these to check your work! ***/

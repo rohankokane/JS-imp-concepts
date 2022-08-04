@@ -12,3 +12,5 @@ window.addEventListener("resize", () => {
   // console.log("heyy");
   throttledExpFn("henloo");
 });
+
+export { throttle };
